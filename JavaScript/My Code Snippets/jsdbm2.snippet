@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>jsdbm2</Title>
+      <Author>KMD A/S</Author>
+      <Description>Implement databind modal2</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>jsdbm2</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>ModalName</ID>
+          <ToolTip>ModalName</ToolTip>
+          <Default>ModalName</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>url</ID>
+          <ToolTip>url</ToolTip>
+          <Default>'url'</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="javascript" Delimiter="$"><![CDATA[// #region $ModalName$
+        
+self.$ModalName$DialogVisible = ko.observable(false);
+
+self.Open$ModalName$Dialog = function () {
+    self.$ModalName$DialogVisible(true);
+};
+
+self.SaveAndClose$ModalName$Dialog = function (event) {
+	event.preventDefault();
+
+	var $$$ModalName$Form = $$('#$ModalName$Form');
+	if ($$$ModalName$Form.valid()) {
+        
+        // TODO map object to send
+		var $ModalName$PostModel = {
+			hello: 'hello'
+		};
+
+		$$.ajax({
+			beforeSend: function () {
+				$$('html').ngPageSpinner({ show: true });
+			},
+			url: $url$,
+			type: 'POST',
+			data: $ModalName$PostModel,
+			success: function (response) {
+				if (response && response.IsSuccess) {
+                    // TODO update $ModalName$PostModel
+					
+                    // ClearErrorMessages
+					OperaNG.Ajax.ValidationSummary.ClearErrorMessages();
+                    
+                    // Hide $ModalName$DialogVisible
+					self.$ModalName$DialogVisible(false);
+				} else {
+					OperaNG.Ajax.ValidationSummary.addMessages($$$ModalName$Form, response);
+				}
+			},
+			error: function (jqXhr, textStatus, errorThrown) {
+				OperaNG.Ajax.ValidationSummary.addMessages($$$ModalName$Form, errorThrown);
+			},
+			complete: function () {
+				$$('html').ngPageSpinner({ show: false });
+			}
+		});
+	}
+};
+
+self.CancelAndClose$ModalName$Dialog = function () {
+    // TODO reset $ModalName$PostModel
+					
+    // ClearErrorMessages
+	OperaNG.Ajax.ValidationSummary.ClearErrorMessages();
+};
+
+// #endregion
+$end$]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

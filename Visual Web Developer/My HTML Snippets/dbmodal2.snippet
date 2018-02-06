@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>dbmodal2</Title>
+      <Author>KMD A/S</Author>
+      <Description>Databind modal2</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>dbm2</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>ModalName</ID>
+          <ToolTip>ModalName</ToolTip>
+          <Default>ModalName</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>Title</ID>
+          <ToolTip>Title</ToolTip>
+          <Default>'Title'</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>OkText</ID>
+          <ToolTip>OkText</ToolTip>
+          <Default>'Gem og luk'</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>Text</ID>
+          <ToolTip>Text</ToolTip>
+          <Default>Text</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="html" Delimiter="$"><![CDATA[
+<button class="btn btn-success" data-bind="click: Open$ModalName$Dialog">$Text$</button>
+<div data-bind="modal2: {
+    name: '$ModalName$Dialog',
+    title: $Title$,
+    okText: $OkText$,
+    visible: $ModalName$DialogVisible,
+    okHandler: SaveAndClose$ModalName$Dialog,
+    cancelHandler: CancelAndClose$ModalName$Dialog    
+}"></div>
+<script type="text/html" id="$ModalName$Dialog">
+    @Html.Partial("_$ModalName$", Model.$ModalName$PostModel)
+</script>
+$end$]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

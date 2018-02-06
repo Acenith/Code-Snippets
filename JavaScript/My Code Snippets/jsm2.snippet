@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>jsm2</Title>
+      <Author>KMD A/S</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>jsm2</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>Content</ID>
+          <ToolTip>Content</ToolTip>
+          <Default>'&lt;p&gt;Content&lt;/p&gt;'</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>Title</ID>
+          <ToolTip>Title</ToolTip>
+          <Default>'Title'</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="javascript" Delimiter="$"><![CDATA[$$('<div />').modal2({
+	title: $Title$,
+	modalBody: $Content$,
+	modalCancelClass: 'hidden'
+}).on('afterok.modal2', function (e) {
+	// Ok
+    $end$
+}).on('aftercancel.modal2', function (e) {
+	// Cancel 
+}).trigger('click');
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
