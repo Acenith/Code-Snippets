@@ -22,23 +22,14 @@
           <Function>ClassName()</Function>
         </Literal>
       </Declarations>
-      <Code Language="csharp" Delimiter="$" Kind="method body"><![CDATA[private static readonly $classname$ $classname$Instance = new $classname$();
+      <Code Language="csharp" Delimiter="$" Kind="method body"><![CDATA[public static $classname$ Instance { get; }
 
 static $classname$()
 {
+    Instance = new $classname$();
 }
 
-private $classname$()
-{
-}
-
-public static $classname$ Instance
-{
-    get
-    {
-        return $classname$Instance;
-    }
-}]]></Code>
+private $classname$() { }]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>
